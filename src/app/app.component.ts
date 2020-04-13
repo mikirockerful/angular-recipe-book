@@ -7,7 +7,7 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'recipe-book';
-  headerOptionSelected: headerOption;
+  headerOptionSelected = headerOption.recipes;
 
   onHeaderOptionSelected(option: string) {
     this.headerOptionSelected = headerOption[option as keyof typeof headerOption];
