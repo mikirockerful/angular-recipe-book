@@ -1,0 +1,9 @@
+<app-header (optionSelected)="onHeaderOptionSelected($event)"></app-header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <app-recipes *ngIf="recipesSelected()"></app-recipes>
+      <app-shopping-list *ngIf="shoppingListSelected()"></app-shopping-list>
+    </div>
+  </div>
+</div>
