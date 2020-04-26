@@ -3,11 +3,13 @@ import {RouterModule, Routes} from '@angular/router';
 import {RecipesComponent} from './recipes/recipes.component';
 import {ShoppingListComponent} from './shopping-list/shopping-list.component';
 import {RecipeDetailComponent} from './recipes/recipe-detail/recipe-detail.component';
+import {RecipeNotSelectedComponent} from './recipes/recipe-not-selected/recipe-not-selected.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/recipes', pathMatch: 'full'},
   {
     path: 'recipes', component: RecipesComponent, children: [
+      {path: '', component: RecipeNotSelectedComponent, pathMatch: 'full'},
       {path: ':id', component: RecipeDetailComponent}
     ]
   },
