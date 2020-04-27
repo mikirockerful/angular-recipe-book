@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Recipe} from '../recipe.model';
 import {ShoppingListService} from '../../shopping-list/shopping-list.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {RecipeService} from '../recipe.service';
 
 @Component({
@@ -15,7 +15,8 @@ export class RecipeDetailComponent implements OnInit {
   constructor(
     private shoppingListService: ShoppingListService,
     private activeRoute: ActivatedRoute,
-    private recipeService: RecipeService
+    private recipeService: RecipeService,
+    private router: Router
   ) {
   }
 
@@ -31,5 +32,9 @@ export class RecipeDetailComponent implements OnInit {
     for (const ingredient of this.recipe.ingredients) {
       this.shoppingListService.addIngredient(ingredient);
     }
+  }
+
+  onEditSelected() {
+    this.router.navigate(['edit'], {relativeTo: this.activeRoute});
   }
 }
