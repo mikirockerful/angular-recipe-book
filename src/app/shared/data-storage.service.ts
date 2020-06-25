@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {RecipeService} from "../recipes/recipe.service";
+import {RecipeService} from '../recipes/recipe.service';
 import {Recipe} from '../recipes/recipe.model';
 import {map, tap} from 'rxjs/operators';
 
@@ -18,14 +18,16 @@ export class DataStorageService {
       (response) => {
         console.log(response);
       }
-    )
+    );
   }
 
   fetchRecipes() {
-    return this.httpClient.get<Recipe[]>('https://recipe-book-ae7ea.firebaseio.com/recipes.json').pipe(
+    return this.httpClient.get<Recipe[]>(
+      'https://recipe-book-ae7ea.firebaseio.com/recipes.json'
+    ).pipe(
       map(recipes => {
         return recipes.map(recipe => {
-          return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []}
+          return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []};
         });
       }),
       tap(
@@ -33,8 +35,7 @@ export class DataStorageService {
           console.log(recipes);
           this.recipeService.setRecipes(recipes);
         }
-      )
-    )
+      ));
   }
 
 }
