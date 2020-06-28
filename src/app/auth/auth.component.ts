@@ -44,4 +44,8 @@ export class AuthComponent {
     );
     authForm.reset();
   }
+
+  onCloseModal() {
+    this.error = null;
+  }
 }
