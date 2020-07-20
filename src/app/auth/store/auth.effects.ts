@@ -108,14 +108,12 @@ export class AuthEffects {
     }),
   );
 
-  @Effect()
+  @Effect({dispatch: false})
   authLogout = this.actions$.pipe(ofType(AuthActions.LOGOUT),
     tap(() => {
-      console.log('log out started');
       this.authService.clearLogoutTimer();
       localStorage.removeItem('userData');
       this.router.navigate(['/auth']);
-      console.log('log out done');
     }));
 
   @Effect()
