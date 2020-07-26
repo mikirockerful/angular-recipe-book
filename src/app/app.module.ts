@@ -9,6 +9,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {SharedModule} from './shared/shared.module';
 import {CoreModule} from './core.module';
 import * as fromApp from './store/app.reducer';
+import {RecipeEffects} from './recipes/store/recipe.effects';
 import {AuthEffects} from './auth/store/auth.effects';
 
 
@@ -21,7 +22,7 @@ import {AuthEffects} from './auth/store/auth.effects';
     AppRoutingModule,
     BrowserModule.withServerTransition({appId: 'serverApp'}),
     CoreModule,
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, RecipeEffects]),
     HttpClientModule,
     SharedModule,
     StoreModule.forRoot(fromApp.appReducer)
